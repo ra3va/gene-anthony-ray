@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.DS_Store
+.env.local
+package-lock.json
+README.md
+Dockerfile
+.dockerignore
+!public/images
