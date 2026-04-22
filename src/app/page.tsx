@@ -4,7 +4,7 @@ import PetitionForm from "@/components/PetitionForm";
 import { getSignatures } from "@/app/actions";
 
 export default async function Home() {
-  const { count, recent } = await getSignatures(10);
+  const { count, recent } = await getSignatures(100);
 
   return (
     <main>
