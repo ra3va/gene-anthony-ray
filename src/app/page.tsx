@@ -261,6 +261,7 @@ export default async function Home() {
         <div className="container">
           <p style={{ marginBottom: '0.5rem' }}>A petition by <strong style={{ color: 'var(--text-main)' }}>The Ray Family</strong> &amp; the community of Harlem.</p>
           <p>&copy; {new Date().getFullYear()} The Gene Anthony Ray Family. All rights reserved.</p>
+          <p style={{ marginTop: '1rem', fontSize: '0.75rem', opacity: 0.5 }}>Built by <a href="https://rathriva.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-gold)', textDecoration: 'none' }}>Ra Thriva</a></p>
         </div>
       </footer>
     </main>
