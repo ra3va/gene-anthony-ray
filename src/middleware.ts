@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   // Redirect re-app.space subdomain to the main .com domain
   if (host.includes('re-app.space')) {
     const url = request.nextUrl.clone();
-    url.host = 'geneanthonray.com';
+    url.host = 'geneanthonyray.com';
     url.port = '';
     return NextResponse.redirect(url, 301);
   }
@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
   // Redirect www to non-www
   if (host.startsWith('www.')) {
     const url = request.nextUrl.clone();
-    url.host = 'geneanthonray.com';
+    url.host = 'geneanthonyray.com';
     url.port = '';
     return NextResponse.redirect(url, 301);
   }
