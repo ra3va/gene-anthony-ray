@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.host = 'geneanthonyray.com';
     url.port = '';
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(url, 302);
   }
 
   // Redirect www to non-www
@@ -16,7 +16,7 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.host = 'geneanthonyray.com';
     url.port = '';
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(url, 302);
   }
 
   return NextResponse.next();
