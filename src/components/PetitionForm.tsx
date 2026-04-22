@@ -39,8 +39,18 @@ export default function PetitionForm() {
             <input type="email" id="petition-email" name="email" className="form-control" placeholder="Your email address" required />
           </div>
           <div className="form-group">
-            <label htmlFor="petition-zip">Zip Code</label>
-            <input type="text" id="petition-zip" name="zipCode" className="form-control" placeholder="e.g. 10039" required />
+            <label htmlFor="petition-address">Street Address</label>
+            <input type="text" id="petition-address" name="address" className="form-control" placeholder="Your street address" />
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="petition-zip">Zip Code</label>
+              <input type="text" id="petition-zip" name="zipCode" className="form-control" placeholder="e.g. 10039" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="petition-phone">Phone (optional)</label>
+              <input type="tel" id="petition-phone" name="phone" className="form-control" placeholder="(212) 555-0000" />
+            </div>
           </div>
           <div className="form-group">
             <label htmlFor="petition-connection">Your Connection (optional)</label>

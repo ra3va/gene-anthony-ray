@@ -33,4 +33,8 @@ db.exec(`
   )
 `);
 
+// Add new columns if they don't exist (safe migration for existing DBs)
+try { db.exec('ALTER TABLE signatures ADD COLUMN address TEXT'); } catch {}
+try { db.exec('ALTER TABLE signatures ADD COLUMN phone TEXT'); } catch {}
+
 export default db;

@@ -502,6 +502,18 @@ textarea.form-control {
   background: rgba(0, 0, 0, 0.5);
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Thank You State */
 .thank-you-message {
   text-align: center;

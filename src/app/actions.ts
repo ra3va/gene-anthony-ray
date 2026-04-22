@@ -6,7 +6,9 @@ import { revalidatePath } from 'next/cache';
 export async function addSignature(formData: FormData) {
   const fullName = formData.get('fullName')?.toString() || '';
   const email = formData.get('email')?.toString() || '';
+  const address = formData.get('address')?.toString() || '';
   const zipCode = formData.get('zipCode')?.toString() || '';
+  const phone = formData.get('phone')?.toString() || '';
   const connection = formData.get('connection')?.toString() || '';
 
   if (!fullName || !email || !zipCode) {
@@ -15,11 +17,11 @@ export async function addSignature(formData: FormData) {
 
   try {
     const insert = db.prepare(`
-      INSERT INTO signatures (fullName, email, zipCode, connection)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO signatures (fullName, email, address, zipCode, phone, connection)
+      VALUES (?, ?, ?, ?, ?, ?)
     `);
     
-    insert.run(fullName, email, zipCode, connection);
+    insert.run(fullName, email, address, zipCode, phone, connection);
     
     // Revalidate the home page so the new signature count/list appears
     revalidatePath('/');
