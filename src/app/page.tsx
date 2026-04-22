@@ -30,6 +30,19 @@ export default async function Home() {
           <div className="hero-actions">
             <a href="#petition" className="btn btn-primary">Add Your Name</a>
           </div>
+          {count >= 0 && (
+            <div className="hero-counter">
+              <p className="hero-counter-text">
+                <strong>{count.toLocaleString()}</strong> of <strong>500</strong> signatures &mdash; <em>help us reach our goal</em>
+              </p>
+              <div className="progress-bar-track">
+                <div
+                  className="progress-bar-fill"
+                  style={{ width: `${Math.min((count / 500) * 100, 100)}%` }}
+                />
+              </div>
+            </div>
+          )}
         </div>
         <div className="hero-scroll-indicator">
           <span>His Story</span>
