@@ -1,34 +1,14 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import ScrollObserver from "@/components/ScrollObserver";
+import PetitionForm from "@/components/PetitionForm";
+import { getSignatures } from "@/app/actions";
 
-export default function Home() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(element => {
-      observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-  };
+export default async function Home() {
+  const { count, recent } = await getSignatures(10);
 
   return (
     <main>
+      <ScrollObserver />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-bg">
@@ -241,39 +221,23 @@ export default function Home() {
             Gene Anthony Ray Way
           </p>
           
-          <div className="glass-card">
-            {!formSubmitted ? (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="petition-name">Full Name</label>
-                  <input type="text" id="petition-name" className="form-control" placeholder="Your full name" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="petition-email">Email Address</label>
-                  <input type="email" id="petition-email" className="form-control" placeholder="Your email address" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="petition-zip">Zip Code</label>
-                  <input type="text" id="petition-zip" className="form-control" placeholder="e.g. 10039" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="petition-connection">Your Connection (optional)</label>
-                  <textarea id="petition-connection" className="form-control" rows={3} placeholder="How do you know Gene? Are you a neighbor, family member, fan, or community leader?" />
-                </div>
-                <div className="form-group" style={{ marginTop: '2rem', textAlign: 'center' }}>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                    Add My Name to the Petition
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <div className="thank-you-message">
-                <div className="thank-you-icon">✦</div>
-                <h3>Thank You</h3>
-                <p>Your name has been added. Together, we will make <strong>Gene Anthony Ray Way</strong> a reality.</p>
+          <PetitionForm />
+          
+          {count > 0 && (
+            <div className="community-support fade-in" style={{ marginTop: '4rem', textAlign: 'left' }}>
+              <h3 style={{ fontFamily: 'var(--font-family-heading)', color: 'var(--accent-gold)', marginBottom: '1.5rem', textAlign: 'center' }}>
+                Join {count} {count === 1 ? 'supporter' : 'supporters'} who have signed
+              </h3>
+              <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' }}>
+                {recent.map((sig) => (
+                  <div key={sig.id} style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <p style={{ fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.25rem' }}>{sig.displayName}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--accent-gold)' }}>{sig.connection}</p>
+                  </div>
+                ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '1.5rem', maxWidth: '500px', margin: '1.5rem auto 0' }}>
             Your information will only be used in support of this petition and will be submitted alongside community signatures to the Manhattan Community Board and NYC City Council.
           </p>
