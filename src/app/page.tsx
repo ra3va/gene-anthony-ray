@@ -222,13 +222,13 @@ export default async function Home() {
 
       {/* Petition Section */}
       <section id="petition" className="petition-section">
-        <div className="container fade-in">
+        <div className="container">
           <p className="section-label text-center">Take Action</p>
           <h2 className="text-gold" style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', marginBottom: '1rem' }}>
             Sign the Petition
           </h2>
           <p style={{ fontSize: '1.15rem', maxWidth: '650px', margin: '0 auto 1rem', color: 'var(--text-muted)' }}>
-            We are formally petitioning <strong style={{ color: 'var(--text-main)' }}>Manhattan Community Board 9</strong> and the <strong style={{ color: 'var(--text-main)' }}>New York City Council</strong> to officially co-name 153rd Street between 8th Avenue and Macombs Place as:
+            We are formally petitioning <strong style={{ color: 'var(--text-main)' }}>Manhattan Community Board 10</strong> and the <strong style={{ color: 'var(--text-main)' }}>New York City Council</strong> to officially co-name 153rd Street between 8th Avenue and Macombs Place as:
           </p>
           <p style={{ fontSize: '1.5rem', fontFamily: 'var(--font-family-heading)', fontWeight: 600, marginBottom: '2.5rem', color: 'var(--accent-gold)' }}>
             Gene Anthony Ray Way
@@ -237,7 +237,7 @@ export default async function Home() {
           <PetitionForm />
           
           {count > 0 && (
-            <div className="community-support fade-in" style={{ marginTop: '4rem', textAlign: 'left' }}>
+            <div className="community-support" style={{ marginTop: '4rem', textAlign: 'left' }}>
               <h3 style={{ fontFamily: 'var(--font-family-heading)', color: 'var(--accent-gold)', marginBottom: '1.5rem', textAlign: 'center' }}>
                 Join {count} {count === 1 ? 'supporter' : 'supporters'} who have signed
               </h3>
@@ -252,7 +252,7 @@ export default async function Home() {
             </div>
           )}
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '1.5rem', maxWidth: '500px', margin: '1.5rem auto 0' }}>
-            Your information will only be used in support of this petition and will be submitted alongside community signatures to Manhattan Community Board 9 and the NYC City Council.
+            Your information will only be used in support of this petition and will be submitted alongside community signatures to Manhattan Community Board 10 and the NYC City Council.
           </p>
         </div>
       </section>
